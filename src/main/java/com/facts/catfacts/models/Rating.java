@@ -1,6 +1,11 @@
 package com.facts.catfacts.models;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "ratings")
 public class Rating {
+    @Id
     private Long id;
     private Long count;
     private Long factId;

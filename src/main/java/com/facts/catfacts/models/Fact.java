@@ -1,7 +1,11 @@
 package com.facts.catfacts.models;
 
-public class Fact {
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document(collection = "facts")
+public class Fact {
+    @Id
     private Long id;
     private String fact;
 
