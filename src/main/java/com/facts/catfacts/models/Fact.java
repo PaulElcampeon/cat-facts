@@ -8,12 +8,10 @@ public class Fact {
     @Id
     private Long id;
     private String fact;
-
-    private Rating rating;
+    private Long rating;
 
     public Fact(String fact) {
         this.fact = fact;
-        this.rating = new Rating();
     }
 
     public Long getId() {
@@ -28,7 +26,7 @@ public class Fact {
         this.fact = fact;
     }
 
-    public Rating getRating() {
+    public Long getRating() {
         return rating;
     }
 }

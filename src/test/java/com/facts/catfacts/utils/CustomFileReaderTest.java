@@ -21,7 +21,6 @@ public class CustomFileReaderTest {
     private final static String PATH = "src/test/test.txt";
     @InjectMocks
     private CustomFileReader underTest;
-
     @Mock
     private LineToFactMapper lineToFactMapper;
 
