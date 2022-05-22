@@ -4,11 +4,12 @@ public class Fact {
 
     private Long id;
     private String fact;
-    private Long ratingId;
 
-    public Fact(String fact, Long ratingId) {
+    private Rating rating;
+
+    public Fact(String fact) {
         this.fact = fact;
-        this.ratingId = ratingId;
+        this.rating = new Rating();
     }
 
     public Long getId() {
@@ -23,11 +24,7 @@ public class Fact {
         this.fact = fact;
     }
 
-    public Long getRatingId() {
-        return ratingId;
-    }
-
-    public void setRatingId(Long ratingId) {
-        this.ratingId = ratingId;
+    public Rating getRating() {
+        return rating;
     }
 }

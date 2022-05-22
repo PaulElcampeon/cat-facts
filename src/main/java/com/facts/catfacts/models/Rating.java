@@ -5,8 +5,7 @@ public class Rating {
     private Long count;
     private Long factId;
 
-    public Rating(Long count) {
-        this.count = count;
+    public Rating() {
     }
 
     public Long getId() {
