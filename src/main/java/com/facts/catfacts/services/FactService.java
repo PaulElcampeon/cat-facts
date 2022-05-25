@@ -9,10 +9,16 @@ public interface FactService {
 
     Optional<Fact> getFact(Long id);
 
+    Fact getRandomFact();
+
     List<Fact> getAll();
 
     Fact addFact(Fact newFact);
 
     void removeFact(Long id);
+
+    long count();
+
+    long getRandomNumber();
 
 }

@@ -29,4 +29,13 @@ public class Fact {
     public Long getRating() {
         return rating;
     }
+
+    @Override
+    public String toString() {
+        return "Fact{" +
+                "id=" + id +
+                ", fact='" + fact + '\'' +
+                ", rating=" + rating +
+                '}';
+    }
 }

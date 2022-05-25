@@ -20,6 +20,11 @@ public class FactServiceImpl implements FactService {
     }
 
     @Override
+    public Fact getRandomFact() {
+        return repository.findById(getRandomNumber()).get();
+    }
+
+    @Override
     public List<Fact> getAll() {
         return repository.findAll();
     }
@@ -32,5 +37,16 @@ public class FactServiceImpl implements FactService {
     @Override
     public void removeFact(Long id) {
         repository.deleteById(id);
+    }
+
+    @Override
+    public long count() {
+        return repository.count();
+    }
+
+    @Override
+    public long getRandomNumber() {
+        long randomNumber = Math.round(Math.random() * count());
+        return randomNumber < 0? 0 : randomNumber;
     }
 }
