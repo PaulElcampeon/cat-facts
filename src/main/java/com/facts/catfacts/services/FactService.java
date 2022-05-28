@@ -15,6 +15,7 @@ public interface FactService {
 
     Fact addFact(Fact newFact);
 
+    Fact updateFact(Fact updatedFact);
     void removeFact(Long id);
 
     long count();

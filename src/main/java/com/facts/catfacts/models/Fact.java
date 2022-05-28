@@ -1,14 +1,19 @@
 package com.facts.catfacts.models;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "facts")
+import javax.persistence.*;
+
+@Entity
+@Table(name = "facts")
 public class Fact {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String fact;
     private Long rating;
+
+    public Fact() {
+    }
 
     public Fact(String fact) {
         this.fact = fact;

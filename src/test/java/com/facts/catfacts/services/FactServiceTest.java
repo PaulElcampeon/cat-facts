@@ -72,6 +72,15 @@ public class FactServiceTest {
     }
 
     @Test
+    void whenUpdateFactIsCalledSaveShouldAlsoBeCalled() {
+        //when
+        underTest.updateFact(new Fact("s"));
+
+        //then
+        verify(repository).save(any(Fact.class));
+    }
+
+    @Test
     void whenRemoveFactIsCalledDeleteByIdShouldAlsoBeCalled() {
         //when
         underTest.removeFact(1l);

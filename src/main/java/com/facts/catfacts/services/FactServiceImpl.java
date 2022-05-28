@@ -35,6 +35,11 @@ public class FactServiceImpl implements FactService {
     }
 
     @Override
+    public Fact updateFact(Fact updatedFact) {
+        return repository.save(updatedFact);
+    }
+
+    @Override
     public void removeFact(Long id) {
         repository.deleteById(id);
     }
