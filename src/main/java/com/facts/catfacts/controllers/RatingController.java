@@ -3,10 +3,7 @@ package com.facts.catfacts.controllers;
 import com.facts.catfacts.models.Rating;
 import com.facts.catfacts.services.RatingService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("ratings")
@@ -21,12 +18,12 @@ public class RatingController {
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public Rating addRating(Rating rating) {
+    public Rating addRating(@RequestBody Rating rating) {
         return ratingService.addRating(rating);
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.PUT)
-    public Rating updateRating(Rating rating) {
+    public Rating updateRating(@RequestBody Rating rating) {
         return ratingService.updateRating(rating);
     }
 

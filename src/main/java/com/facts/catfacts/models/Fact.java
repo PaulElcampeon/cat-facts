@@ -2,6 +2,7 @@ package com.facts.catfacts.models;
 
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = "facts")
@@ -10,8 +11,7 @@ public class Fact {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String fact;
-    private Long rating;
-
+    
     public Fact() {
     }
 
@@ -31,16 +31,24 @@ public class Fact {
         this.fact = fact;
     }
 
-    public Long getRating() {
-        return rating;
-    }
-
     @Override
     public String toString() {
         return "Fact{" +
                 "id=" + id +
                 ", fact='" + fact + '\'' +
-                ", rating=" + rating +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Fact fact1 = (Fact) o;
+        return Objects.equals(id, fact1.id) && Objects.equals(fact, fact1.fact);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, fact);
     }
 }

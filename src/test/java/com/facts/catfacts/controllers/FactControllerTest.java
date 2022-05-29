@@ -2,6 +2,7 @@ package com.facts.catfacts.controllers;
 
 import com.facts.catfacts.models.Fact;
 import com.facts.catfacts.services.FactService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -21,6 +22,9 @@ public class FactControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
+
+    @Autowired
+    private ObjectMapper objectMapper;
 
     @MockBean
     private FactService factService;
@@ -54,10 +58,12 @@ public class FactControllerTest {
     public void whenFactIsAddedShouldCallAddFact() throws Exception {
         //when
         Fact fact = new Fact("blank");
-        String factAsJsonString = JsonMapper.mapToJson(fact);
+        String factAsJsonString = objectMapper.writeValueAsString(fact);
 
         this.mockMvc.perform(post("/facts/add")
-                .accept(MediaType.APPLICATION_JSON_VALUE).content(factAsJsonString)).andReturn();
+                        .contentType(MediaType.APPLICATION_JSON_VALUE)
+                        .content(factAsJsonString))
+                .andReturn();
 
         //then
         verify(factService).addFact(any(Fact.class));
@@ -67,10 +73,12 @@ public class FactControllerTest {
     public void whenFactIsUpdatedShouldCallUpdateFact() throws Exception {
         //when
         Fact fact = new Fact("blank");
-        String factAsJsonString = JsonMapper.mapToJson(fact);
+        String factAsJsonString = objectMapper.writeValueAsString(fact);
 
         this.mockMvc.perform(put("/facts/update")
-                .accept(MediaType.APPLICATION_JSON_VALUE).content(factAsJsonString)).andReturn();
+                        .contentType(MediaType.APPLICATION_JSON_VALUE)
+                        .content(factAsJsonString))
+                .andReturn();
 
         //then
         verify(factService).updateFact(any(Fact.class));

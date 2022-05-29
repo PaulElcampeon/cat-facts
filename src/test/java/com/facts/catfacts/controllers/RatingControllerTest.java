@@ -2,6 +2,7 @@ package com.facts.catfacts.controllers;
 
 import com.facts.catfacts.models.Rating;
 import com.facts.catfacts.services.RatingService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -19,6 +20,8 @@ public class RatingControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
+    @Autowired
+    private ObjectMapper objectMapper;
     @MockBean
     private RatingService ratingService;
 
@@ -35,10 +38,14 @@ public class RatingControllerTest {
     public void whenRatingIsAddedShouldCallAddRating() throws Exception {
         //when
         Rating rating = new Rating();
-        String ratingAsJsonString = JsonMapper.mapToJson(rating);
+        String ratingAsJsonString = objectMapper.writeValueAsString(rating);
 
-        this.mockMvc.perform(post("/ratings/add")
-                .accept(MediaType.APPLICATION_JSON_VALUE).content(ratingAsJsonString)).andReturn();
+        this.mockMvc
+                .perform(post("/ratings/add")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON_VALUE)
+                        .content(ratingAsJsonString))
+                .andReturn();
 
         //then
         verify(ratingService).addRating(any(Rating.class));
@@ -48,10 +55,14 @@ public class RatingControllerTest {
     public void whenRatingIsUpdatedShouldCallUpdateRating() throws Exception {
         //when
         Rating rating = new Rating();
-        String ratingAsJsonString = JsonMapper.mapToJson(rating);
+        String ratingAsJsonString = objectMapper.writeValueAsString(rating);
 
-        this.mockMvc.perform(put("/ratings/update")
-                .accept(MediaType.APPLICATION_JSON_VALUE).content(ratingAsJsonString)).andReturn();
+        this.mockMvc
+                .perform(put("/ratings/update")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON_VALUE)
+                        .content(ratingAsJsonString))
+                .andReturn();
 
         //then
         verify(ratingService).updateRating(any(Rating.class));
