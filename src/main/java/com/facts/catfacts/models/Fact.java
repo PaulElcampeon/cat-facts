@@ -8,8 +8,21 @@ import java.util.Objects;
 @Table(name = "facts")
 public class Fact {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(
+            name="fact_sequence",
+            sequenceName = "fact_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "fact_sequence"
+    )
+    @Column(
+            name = "id",
+            updatable = false
+    )
     private Long id;
+    @Column(columnDefinition = "TEXT")
     private String fact;
     
     public Fact() {

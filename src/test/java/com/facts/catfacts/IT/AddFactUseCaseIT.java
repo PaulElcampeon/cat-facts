@@ -1,4 +1,4 @@
-package com.facts.catfacts.integrationtests;
+package com.facts.catfacts.IT;
 
 import com.facts.catfacts.models.Fact;
 import com.facts.catfacts.repositories.FactRepository;
@@ -21,7 +21,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class AddFactUseCaseIntegrationTest {
+public class AddFactUseCaseIT {
 
     @Autowired
     private MockMvc mockMvc;

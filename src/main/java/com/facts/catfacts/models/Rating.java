@@ -8,7 +8,19 @@ import javax.persistence.*;
 public class Rating {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(
+            name="rating_sequence",
+            sequenceName = "rating_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "rating_sequence"
+    )
+    @Column(
+            name = "id",
+            updatable = false
+    )
     private Long id;
 
     private Long factId;
