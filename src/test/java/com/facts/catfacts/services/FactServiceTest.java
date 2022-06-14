@@ -2,6 +2,7 @@ package com.facts.catfacts.services;
 
 import com.facts.catfacts.models.Fact;
 import com.facts.catfacts.repositories.FactRepository;
+import com.facts.catfacts.utils.CustomFileReader;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -24,7 +25,8 @@ public class FactServiceTest {
     private FactServiceImpl underTest;
     @Mock
     private FactRepository repository;
-
+    @Mock
+    private CustomFileReader customFileReader;
     @Test
     void whenGetFactIsCalledShouldReturnFactObject() {
         //when

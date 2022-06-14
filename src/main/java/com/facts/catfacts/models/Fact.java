@@ -9,7 +9,7 @@ import java.util.Objects;
 public class Fact {
     @Id
     @SequenceGenerator(
-            name="fact_sequence",
+            name = "fact_sequence",
             sequenceName = "fact_sequence",
             allocationSize = 1
     )
@@ -24,7 +24,7 @@ public class Fact {
     private Long id;
     @Column(columnDefinition = "TEXT")
     private String fact;
-    
+
     public Fact() {
     }
 
