@@ -3,13 +3,13 @@ services:
     container_name: postgres
     image: postgres
     environment:
-      POSTGRES_USER: dev
-      POSTGRES_PASSWORD: password
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: mysecretpassword
       PGDATA: /data/postgres
     volumes:
       - postgres:/data/postgres
     ports:
-      - "5432:5432"
+      - "5431:5432"
     networks:
       - postgres
     restart: unless-stopped
